@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="MyApp">
+	<head>
+		<title>Hello AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    	<script src="hello.js"></script>
+    	<link href="css/estilo.css" rel="stylesheet">
+	</head>
+
+<body ng-controller="myCtrl">
+<table>
+  <tr ng-repeat="x in myWelcome | orderBy : 'descricao'">
+  	<td>{{ $index + 1 }}</td>
+    <td>{{ x.descricao }}</td>
+    <td>{{ x.status }}</td>
+  </tr>
+</table>
+</body>
+</html>

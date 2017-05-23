@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import br.com.joathan.agenda.model.Equipamento;
 
-@RepositoryRestResource(collectionResourceRel = "people", path = "people")
+@RepositoryRestResource(collectionResourceRel = "equipamento", path = "equipamento")
 public interface EquipamentoRepository extends PagingAndSortingRepository<Equipamento, Long> {
 
 	List<Equipamento> findByDescricao(@Param("descricao") String descricao);

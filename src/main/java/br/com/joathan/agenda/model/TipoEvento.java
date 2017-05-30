@@ -8,21 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Local implements Serializable {
+public class TipoEvento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private long id;
-	private String nome;
-	private int capacidade;
-	private double valor;
-	private String unidade;
-
-	public Local() {
-	}
-
+	private String descricao;
 
 	public long getId() {
 		return id;
@@ -32,36 +24,12 @@ public class Local implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public int getCapacidade() {
-		return capacidade;
-	}
-
-	public void setCapacidade(int capacidade) {
-		this.capacidade = capacidade;
-	}
-
-	public double getValor() {
-		return valor;
-	}
-
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-
-	public String getUnidade() {
-		return unidade;
-	}
-
-	public void setUnidade(String unidade) {
-		this.unidade = unidade;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public static long getSerialversionuid() {
@@ -84,24 +52,10 @@ public class Local implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Local other = (Local) obj;
+		TipoEvento other = (TipoEvento) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
-
-	public void cadastrar() {
-
-	}
-
-	public void editar() {
-
-	}
-
-	public void excluir() {
-
-	}
-	
-
 
 }

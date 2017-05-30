@@ -1,60 +1,42 @@
 package br.com.joathan.agenda.model;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
+import java.util.Calendar;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+// @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Evento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@OneToOne(cascade = CascadeType.ALL)
-	private Horario horario;
-	@OneToOne(cascade = CascadeType.ALL)
-	private Usuario usuario;
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Local> locais; // = new ArrayList<Local>();;
+	private long id;
+
+	@OneToOne
+	private TipoEvento tipoEvento;
+	@OneToOne
+	private Reserva reserva;
+
 	private String nome;
 	@Temporal(TemporalType.DATE)
-	private Date data_inicio;
+	private Calendar datainicio;
 	@Temporal(TemporalType.DATE)
-	private Date data_fim;
+	private Calendar datafim;
 
-	public Long getId() {
-		return id;
+	public TipoEvento getTipoEvento() {
+		return tipoEvento;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Horario getHorario() {
-		return horario;
-	}
-
-	public void setHorario(Horario horario) {
-		this.horario = horario;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setTipoEvento(TipoEvento tipoEvento) {
+		this.tipoEvento = tipoEvento;
 	}
 
 	public String getNome() {
@@ -65,28 +47,39 @@ public class Evento implements Serializable {
 		this.nome = nome;
 	}
 
-	public Date getData_inicio() {
-		return data_inicio;
+	public Calendar getDatainicio() {
+		return datainicio;
 	}
 
-	public void setData_inicio(Date data_inicio) {
-		this.data_inicio = data_inicio;
+	public void setDatainicio(Calendar datainicio) {
+		this.datainicio = datainicio;
 	}
 
-	public Date getData_fim() {
-		return data_fim;
+	public Calendar getDatafim() {
+		return datafim;
 	}
 
-	public void setData_fim(Date data_fim) {
-		this.data_fim = data_fim;
+	public void setDatafim(Calendar datafim) {
+		this.datafim = datafim;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	public List<Local> getLocais() {
-		return locais;
+	public long getId() {
+		return id;
 	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Reserva getReserva() {
+		return reserva;
+	}
+
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
+	}
 }

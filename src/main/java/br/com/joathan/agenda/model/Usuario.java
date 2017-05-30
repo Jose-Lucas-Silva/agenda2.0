@@ -10,28 +10,19 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-// cria a tabela com os dois campos. usar classe normal
-// @Inheritance
-
-// cria tabelas fazendo join na principal. usar classe abstrata
 @Inheritance(strategy = InheritanceType.JOINED)
-
-// cria tabelas contendo mesmos campos da principal. usar classe abstrata
-// @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-
-// usar essa anotação sem a anotação @Entity
-// aparentemente tem o mesmo funcionamento da ultima anotação
-// @MappedSuperclass
-public abstract class Usuario implements Serializable {
-
-	/**
-	 * 
-	 */
+public class Usuario implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String nome;
+
+	private String contato;
+
+	private String email;
 
 	public Long getId() {
 		return id;
@@ -48,5 +39,51 @@ public abstract class Usuario implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getContato() {
+		return contato;
+	}
+
+	public void setContato(String contato) {
+		this.contato = contato;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
 
 }

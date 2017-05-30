@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Equipamentos</title>
+<!-- Load AngularJS -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="js/equip2.js"></script>
+<link href="css/estilo.css" rel="stylesheet">
+</head>
+<body>
+	<h1>Equipamentos</h1>
+<body ng-app="UserManagement" ng-controller="UserManagementController">
+
+	<table>
+		<tr>
+			<th>COD.</th>
+			<th>Descrição</th>
+			<th>Status</th>
+			<th>Opções</th>
+		</tr>
+
+		<tr ng-repeat="employee in employees">
+			<td>{{ employee.id }}</td>
+			<td>{{ employee.descricao }}</td>
+			<td>{{ employee.status }}</td>
+			<td>
+				<button ng-click="editEmployee( employee )" class="button">Editar</button>
+			
+				<button ng-click="removeEmployee( employee )" class="button">Excluir</button>
+			</td>
+		</tr>
+
+	</table>
+
+	<h2>Add/Edit Equipamentos</h2>
+
+	<form ng-submit="submitEmployee()">
+		<table>
+			<tr>
+				<td>Deescrição</td>
+				<td><input type="text" ng-model="form.descricao" size="60" /></td>
+			</tr>
+			<tr>
+				<td>Status</td>
+				<td><input type="text" ng-model="form.status" size="60" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Salvar" /></td>
+			</tr>
+		</table>
+	</form>
+
+</body>
+</html>
